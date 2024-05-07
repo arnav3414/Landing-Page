@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="icon" href="./img/HYPE LOGO.gif" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out;
+            transition: transform 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.4;
+            max-height: 2.8em;
+            text-overflow: ellipsis;
+        }
+
+        .card-text {
+            font-size: 14px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            line-height: 1.4;
+            max-height: 4.2em;
+            text-overflow: ellipsis;
+            white-space: normal;
+        }
+
+        .img {
+            height: 130px;
+            overflow: hidden;
+        }
+
+        .img img {
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+        }
+
+        #navbar-placeholder {
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                margin: 10px 0;
+            }
+
+            .col-lg-3, .col-md-4, .col-sm-6 {
+                width: 100%;
+            }
+
+            .card-title {
+                font-size: 14px;
+                -webkit-line-clamp: 2; 
+            }
+
+            .card-text {
+                font-size: 12px;
+                -webkit-line-clamp: 2;
+            }
+
+            .img {
+                height: 100px;
+            }
+
+            #refreshButton {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            #navbar-placeholder .menu{
+                top: 120px;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Placeholder for navbar
+    <div id="navbar-placeholder"></div> -->
+
+    <div class="container news-container">
+        <div id="newsList" class="row mt-3"></div>
+        <button id="refreshButton" class="btn btn-primary">More News</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let numNewsDisplayed = 8; 
+
+            function fetchNews(query) {
+                let url;
+                if (query) {
+                    url = `https://newsapi.org/v2/everything?q=${query}&apiKey=1652eb47aa40421eb92575b017648bcc&pageSize=${numNewsDisplayed}`;
+                } else {
+                    url = `https://newsapi.org/v2/everything?q=gaming&apiKey=1652eb47aa40421eb92575b017648bcc&pageSize=${numNewsDisplayed}`;
+                }
+
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const newsList = document.getElementById("newsList");
+                        newsList.innerHTML = '';
+                        data.articles.forEach(article => {
+                            const newsItem = `
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                                    <div class="card">
+                                        <div class="img">
+                                            <img src="${article.urlToImage}" class="card-img-top" alt="News Image">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">${article.title}</h5>
+                                            <p class="card-text">${article.description}</p>
+                                            <a href="${article.url}" target="_blank" class="btn btn-primary">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            newsList.innerHTML += newsItem;
+                        });
+                    })
+                    .catch(error => console.error(error));
+            }
+
+            function searchNewsByTopic(topic) {
+                fetchNews(topic);
+            }
+
+            fetchNews();
+
+            document.querySelectorAll('.nav-link').forEach(item => {
+                item.addEventListener('click', event => {
+                    const topic = event.target.textContent.trim();
+                    searchNewsByTopic(topic);
+                });
+            });
+
+            document.getElementById("refreshButton").addEventListener("click", function() {
+                numNewsDisplayed += 4; 
+                fetchNews();
+            });
+
+            document.getElementById("searchForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                const query = document.getElementById("searchInput").value;
+                if (query.trim() !== "") {
+                    fetchNews(query);
+                }
+            });
+        });
+
+        fetch('./navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+            });
+
+        const toggleMenu = () => {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show-menu');
+        };
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

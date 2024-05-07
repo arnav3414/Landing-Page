@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Honk:MORF@30&family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,100..900;1,100..900&family=Honk:MORF@30&family=Merienda:wght@300..900&family=Pacifico&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main {
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3) 10%, rgba(0, 0, 0, 0.3) 10%), url(./img/bg.jpg);
+    background-position: center;
+    background-size: relative;
+    height: 100vh;
+    background-size: cover
+}
+
+.navbar {
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+
+.icon {
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+
+.logo {
+    color: #0080ff;
+    font-size: 35px;
+    font-family: "Pacifico", cursive;
+    margin-top: 5px;
+    margin-right: -20px;
+}
+
+.menu {
+    width: 400px;
+    float: left;
+    height: 70px;
+}
+
+ul {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li {
+    list-style: none;
+    margin-left: 62px;
+    margin-top: 27px;
+    font-size: 14px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+}
+
+ul li a:hover {
+    color: #0080ff;
+}
+
+.search {
+    width: 330px;
+    float: left;
+    margin-left: 270px;
+}
+
+.srch {
+    font-family: 'Times New Roman';
+    width: 200px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid #0080ff;
+    margin-top: 13px;
+    color: #fff;
+    border-right: none;
+    font-size: 16px;
+    float: left;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.btn {
+    width: 100px;
+    height: 40px;
+    background: #0080ff;
+    border: 2px solid #0080ff;
+    margin-top: 13px;
+    color: #fff;
+    font-size: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    color: #000;
+}
+
+.btn:focus,
+.srch:focus {
+    outline: none;
+}
+
+.content {
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    color: #ffffff;
+    position: relative;
+}
+
+.content .par {
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    padding-left: 20px;
+    padding-bottom: 25px;
+    letter-spacing: 1.2px;
+    line-height: 30px;
+    opacity: 0;
+}
+
+span{
+    padding-left: 50px;
+}
+
+h4{
+    padding-left: 100px;
+}
+.content .par span {
+    display: inline-block;
+    opacity: 0;
+    animation: slideInWord 0.5s ease-in-out forwards;
+}
+
+@keyframes slideInWord {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.content h1 {
+    font-family: "Merienda", cursive;
+  font-optical-sizing: auto;
+    font-size: 50px;
+    padding-left: 20px;
+    margin-top: 9%;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: slideIn 1s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+p {
+   
+    opacity: 0;
+    animation: slideInParagraph 2s ease-in-out forwards;
+}
+
+@keyframes slideInParagraph {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content .cn {
+    width: 160px;
+    height: 40px;
+    background: #0080ff;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .4s ease;
+}
+
+.content .cn a {
+    text-decoration: none;
+    color: #000;
+    transition: .3s ease;
+}
+
+.cn:hover {
+    background-color: #fff;
+}
+
+.content span {
+    color: #0080ff;
+    font-size: 65px;
+    font-family: "Merienda", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.media-icons{
+    margin: 20px;
+}
+.media-icons a{
+    font-size: 25px;
+    margin-right: 30px;
+  }

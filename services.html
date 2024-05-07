@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="./img/HYPE LOGO.gif" type="image/x-icon">
+
+<title>Game Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000000;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px;
+    display: none; 
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .game-card {
+    width: 48%;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .game-card:hover {
+    transform: scale(1.02);
+  }
+  .game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .game-card:hover::before {
+    opacity: 1;
+  }
+  .game-card-content {
+    position: relative;
+    z-index: 2;
+    padding: 50px;
+    color: #fff;
+  }
+  .game-card-content h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .game-card-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    height: 0;
+    transition: height 0.3s ease; 
+  }
+  .game-card:hover .game-card-content p {
+    height: auto; 
+  }
+  .game-card-content a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    background-color: #2c7bfe;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  .game-card-content a:hover {
+    background-color: #1f194c;
+  }
+  .loader {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+  .loader img {
+    width: 100px;
+    height: 100px;
+  }
+  @media screen and (max-width: 768px) {
+    .game-card {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="game-card" style="background-image: url(./img/Services-img/Subway.webp);">
+      <div class="game-card-content">
+        <h2>Subway Surfers</h2>
+        <a href="https://poki.com/en/g/subway-surfers" target="_blank">Play</a>
+        <p>Subway Surfers is a single player mobile gaming app. The aim of the game is to outrun a train inspector while dodging oncoming trains, barriers and other objects.</p>
+      </div>
+    </div>
+    <div class="game-card" style="background-image: url(./img/Services-img/MotoX3M.avif);">
+      <div class="game-card-content">
+        <h2>MotoX3M</h2>
+        <a href="https://poki.com/en/g/moto-x3m">Play </a>
+        <p>Moto X3M is an online bike racing game. The goal is to race your motorbike through levels with massive, moving obstacles</p>
+      </div>
+    </div>
+    <div class="game-card" style="background-image: url(./img/Services-img/Stick-merge.png);">
+      <div class="game-card-content">
+        <h2>Stick-merge</h2>
+        <a href="https://poki.com/en/g/stick-merge">Play </a>
+        <p>a casual action and merging game. Your goal is to combine different sorts of weaponry to build more powerful firearms</p>
+      </div>
+    </div>
+    <div class="game-card" style="background-image: url(./img/Services-img/Drive-mad.jpg);">
+      <div class="game-card-content">
+        <h2>Drive-Mad</h2>
+        <a href="https://poki.com/en/g/drive-mad">Play </a>
+        <p>Drive Mad is a car game where you drive on a track filled with obstacles. Your aim is to reach the finish line in one piece.</p>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="loader" id="loader">
+    <img src="./img/Services-img/love-game.gif" alt="Loader">
+  </div>
+
+  <script>   
+    setTimeout(function(){
+      document.getElementById("loader").style.display = "none";
+      document.querySelector(".container").style.display = "flex"; 
+    }, 3000);
+  </script>
+
+</body>
+</html>
